@@ -1,0 +1,23 @@
+{% extends 'reader/base.html' %}
+
+{% block title %}Passenger Tapped{% endblock %}
+
+{% block content %}
+  <h2>Passenger Tapped</h2>
+
+  {% if passenger %}
+    <p>ID: {{ passenger.passengerID }}</p>
+    <p>Name: {{ passenger.full_name }}</p>
+    <p>Age: {{ passenger.age }}</p>
+    
+    {% if passenger.tap_count == 1 %}
+      <p>Location assigned: {{ passenger.location1 }}</p>
+    {% else %}
+      <p>Location updated ({{ passenger.tap_count }} times): {{ passenger.location2 }}</p>
+    {% endif %}
+    
+    <!-- Add other fields as needed -->
+  {% else %}
+    <p>No passenger information available.</p>
+  {% endif %}
+{% endblock %}

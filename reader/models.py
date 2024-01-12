@@ -11,6 +11,7 @@ class Passenger(models.Model):
     passengerID = models.IntegerField(primary_key=True, unique=True)
     full_name = models.CharField(max_length=255)
     age = models.IntegerField()
+    tap_count = models.IntegerField(default=0)
     location1 = models.CharField(max_length=255)
     location2 = models.CharField(max_length=255, null=True, blank=True)
     status = models.BooleanField(choices=[(1, 'Active'), (0, 'Inactive')], default=1)
