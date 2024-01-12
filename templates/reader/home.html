@@ -5,6 +5,7 @@
 {% block content %}
 <!-- Header Section -->
 <header class="masthead">
+    
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
@@ -15,11 +16,12 @@
     </div>
 </header>
 
-<!-- Contact Section Form -->
-<form method="post" action="{% url 'getDetails' %}">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Submit</button>
+<h2>Tap Passenger</h2>
+
+<form method="post" action="{% url 'tap_passenger' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Tap</button>
 </form>
 
 <!-- Display Passenger Details -->

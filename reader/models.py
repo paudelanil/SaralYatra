@@ -19,3 +19,9 @@ class Passenger(models.Model):
 
     def str(self):
         return self.full_name
+class NFCData(models.Model):
+    record_type = models.CharField(max_length=255)
+    data = models.TextField()
+
+    def str(self):
+        return self.data
