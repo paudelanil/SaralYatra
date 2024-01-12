@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFC Reader</title>
+</head>
+
+<body>
+Hello !!
+    <script>
+        async function initNFC() {
+            try {
+                const ndef = new NDEFReader();
+
+                ndef.addEventListener('reading', ({ message }) => {
+                    console.log('NFC Data:', message);
+
+                    // Extract and display text data
+                    for (const record of message.records) {
+                        const textDecoder = new TextDecoder();
+                        const data = textDecoder.decode(record.data);
+                        console.log('Record Type:', record.recordType);
+                        console.log('Record Data:', data);
+                        alert("NFC is read");
+                    }
+                });
+
+                await ndef.scan();
+                console.log('NFC Reader is ready.');
+            } catch (error) {
+                console.error('Error initializing NFC:', error);
+            }
+        }
+
+        // Check if the browser supports the Web NFC API
+        if ('NDEFReader' in window) {
+            initNFC();
+        } else {
+            // Browser does not support Web NFC API
+            console.error('Web NFC API is not supported in this browser.');
+        }
+    </script>
+
+</body>
+
+</html>
