@@ -6,4 +6,4 @@ from .models import Read
 # Create your views here.
 class HomePageView(ListView):
     model = Read
-    template_name = "home.html"
+    template_name = "reader/home.html"
