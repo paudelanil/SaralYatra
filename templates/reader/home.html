@@ -3,43 +3,33 @@
 {% block title %}Home - Saral Yatra{% endblock %}
 
 {% block content %}
-    <!-- Header Section -->
-    <header class="masthead">
-        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-            <div class="d-flex justify-content-center">
-                <div class="text-center">
-                    <h1 class="mx-auto my-0 text-uppercase">Saral Yatra</h1>
-                    <a class="btn btn-primary" href="{% url 'initalProfile' %}">Scan Pay</a>
-                </div>
+<!-- Header Section -->
+<header class="masthead">
+    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+        <div class="d-flex justify-content-center">
+            <div class="text-center">
+                <h1 class="mx-auto my-0 text-uppercase">Saral Yatra</h1>
+                <a class="btn btn-primary" href="{% url 'initialProfile' %}">Scan Pay</a>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
-         <!-- Contact Section Form-->
-         <div class="row justify-content-center">
-            <div class="col-lg-8 col-xl-7">
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- * * SB Forms Contact Form * *-->
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- This form is pre-integrated with SB Forms.-->
-                <!-- To make this form functional, sign up at-->
-                <!-- https://startbootstrap.com/solution/contact-forms-->
-                <!-- to get an API token!-->
-                <form id="contactForm" method=" POST", action = "{% url 'passenger_details'}">
-                    <!-- Name input-->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                        <label for="name">Passenger ID</label>
-            
-                    </div>
+<!-- Contact Section Form -->
+<form method="post" action="{% url 'getDetails' %}">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Submit</button>
+</form>
 
-                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                    <!-- Submit Button-->
-                    <button  id="submitButton" type="submit">Scan</button>
-                </form>
-            </div>
-        </div>
-    
+<!-- Display Passenger Details -->
 
-    
+
+<script>
+    function closeDetails() {
+        // Add logic to close the details card, e.g., hide or remove it from the DOM
+        document.querySelector('.card').style.display = 'none';
+    }
+</script>
+
 {% endblock %}

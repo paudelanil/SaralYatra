@@ -124,37 +124,10 @@
             </div>
         </section>
     
-           >
-        
-                <!-- Contact Section Form-->
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-xl-7">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                       <form id="contactForm" method="post" action="{% url 'scan_passenger' %}">
-    {% csrf_token %}
-    <!-- Passenger ID input-->
-    <div class="form-floating mb-3">
-        {{ form.passenger_id }}
-        <label for="{{ form.passenger_id.id_for_label }}">Passenger ID</label>
-    </div>
 
-    <div class="d-none" id="submitErrorMessage">
-        <div class="text-center text-danger mb-3">Error sending message!</div>
-    </div>
-    <!-- Submit Button-->
-    <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Scan</button>
-</form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Footer-->
+    
+
+  
         <footer class="footer text-center">
             <div class="container">
                 <div class="row">
@@ -224,6 +197,24 @@
                 </div>
             </div>
         </div>
+
+
+        {% if passenger %}
+    <div class="card mt-4">
+        <div class="card-header">
+            Passenger Details
+            <button type="button" class="close" aria-label="Close" onclick="closeDetails()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <h2>ID: {{ passenger.passengerID }}</h2>
+            <p>Name: {{ passenger.full_name }}</p>
+            <p>Age: {{ passenger.age }}</p>
+            <!-- Add other fields as needed -->
+        </div>
+    </div>
+{% endif %}
         <!-- Portfolio Modal 2-->
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
             <div class="modal-dialog modal-xl">
