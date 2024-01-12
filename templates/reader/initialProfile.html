@@ -200,21 +200,27 @@
 
 
         {% if passenger %}
-    <div class="card mt-4">
-        <div class="card-header">
-            Passenger Details
-            <button type="button" class="close" aria-label="Close" onclick="closeDetails()">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            Passenger Details
+                            <button type="button" class="close" aria-label="Close" onclick="closeDetails()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h2>ID: {{ passenger.passengerID }}</h2>
+                            <p>Name: {{ passenger.full_name }}</p>
+                            <p>Age: {{ passenger.age }}</p>
+                            <!-- Add other fields as needed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <h2>ID: {{ passenger.passengerID }}</h2>
-            <p>Name: {{ passenger.full_name }}</p>
-            <p>Age: {{ passenger.age }}</p>
-            <!-- Add other fields as needed -->
-        </div>
-    </div>
-{% endif %}
+    {% endif %}
         <!-- Portfolio Modal 2-->
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
             <div class="modal-dialog modal-xl">

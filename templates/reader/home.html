@@ -31,5 +31,13 @@
         document.querySelector('.card').style.display = 'none';
     }
 </script>
-
+{% if passenger %}
+    <div>
+        <h2>Passenger Details:</h2>
+        <p>ID: {{ passenger.passengerID }}</p>
+        <p>Name: {{ passenger.full_name }}</p>
+        <p>Age: {{ passenger.age }}</p>
+        <!-- Add other fields as needed -->
+    </div>
+{% endif %}
 {% endblock %}

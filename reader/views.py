@@ -8,7 +8,7 @@ class HomePageView(ListView):
     template_name = "reader/home.html"
 
 def initialProfile(request):
-    return render(request, 'reader/initialProfile.html', {})
+    return render(request, 'reader/initialProfile.html', )
 
 def getDetails(request):
     context = {}
@@ -22,4 +22,4 @@ def getDetails(request):
             context['passenger'] = passenger
 
     context['form'] = form
-    return render(request, 'reader/initalProfile.html', context)
+    return render(request, 'reader/home.html', context)
