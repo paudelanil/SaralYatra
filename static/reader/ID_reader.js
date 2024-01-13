@@ -13,7 +13,13 @@ async function initNFC() {
                 console.log('Record Data:', data);
 
                 // Send data to Django backend using form submission
-                await sendDataToDjango(record.recordType, data);
+                const response = await sendDataToDjango(record.recordType, data);
+
+                // Redirect to the specified URL after successful data submission
+                if (response.success) {
+                    const id = response.id; // Assuming the response contains an ID
+                    redirectToWebsite(`passenger_tapped/${id}/`);
+                }
             }
         });
 
@@ -37,9 +43,16 @@ async function sendDataToDjango(recordType, data) {
 
         const result = await response.json();
         console.log('Data sent to Django. Server response:', result);
+
+        return result; // Assuming your Django backend sends a JSON response with success and id properties
     } catch (error) {
         console.error('Error sending data to Django:', error);
     }
+}
+
+function redirectToWebsite(path) {
+    // Redirect to the specified path
+    window.location.href = path;
 }
 
 // Check if the browser supports the Web NFC API

@@ -86,13 +86,12 @@ def caluclate_price(location1,location2,IDstatus):
 
 @csrf_exempt
 def save_nfc_data(request):
-    context = {}
+    # context = {}
     if request.method == "POST":
         record_type = request.POST.get("record_type")
         data = request.POST.get("data")
         passenger = Passenger.objects.get(passengerID=data)
-        if passenger.tap_count <1:
-           
+        if passenger.tap_count < 1:
             # Existing passenger, increment tap_count and update location2
             passenger.tap_count += 1
             passenger.location1 = f"New Location for {passenger.passengerID}"
@@ -102,11 +101,15 @@ def save_nfc_data(request):
 
         passenger.save()
 
-        
         nfc_data = NFCData.objects.create(record_type=record_type, data=data)
         nfc_data.save()
-        context['passenger'] = passenger
-        return render(request, 'reader/initialProfile.html', context)
+
+        # Modify the response to return a JSON response
+        response_data = {'success': True, 'id': passenger.passengerID}  # Add any additional data you want to send
+        return JsonResponse(response_data)
+    else:
+        # Handle other HTTP methods if needed
+        return JsonResponse({'error': 'Invalid HTTP method'}, status=400)
 
         
 
