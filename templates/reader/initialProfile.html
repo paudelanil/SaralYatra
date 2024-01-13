@@ -1,75 +1,52 @@
-<!DOCTYPE html>
 {% extends 'reader/base.html' %}
 
-{% block content %}
-
-        <!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/game.png" alt="..." />
-                        </div>
-                    </div>
-                 
-
-
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% block content %}   
+    <head>
+        <script>
+            setTimeout(function () {
+                window.location.href = "{% url 'home' %}";
+            }, 4000);  // Redirect after 5 seconds
+        </script>
+    </head> 
+    <body id="page-top">
+        <!-- Navigation-->
         {% if passenger %}
-     <h2>Passenger Tapped</h2>
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-3" src=" {% static 'reader/assets/img/avataaars.svg' %}" alt="..." />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0"><p>{{ passenger.full_name }}</p</h1>
+                    <div class="divider-custom divider-light">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                        <div class="divider-custom-line"></div>
+                    </div>
+                    {% if passenger.tap_count == 1 %}
+                    <p class="masthead-subheading font-weight-light mb-0"> Your Location of Departure: {{ passenger.location1 }}</p>
+                    {% else %}
+                    
+                    <p class="masthead-subheading font-weight-light mb-0">Your Destination: {{ passenger.location2 }}</p>
+
+                      Fare: {{passenger.Fare}}
+                    {% endif %}
+                
+                
+                    <!-- Icon Divider-->
+                
+                
+            </div>
 
 
-    <p>ID: {{ passenger.passengerID }}</p>
-    <p>Name: {{ passenger.full_name }}</p>
-    <p>Age: {{ passenger.age }}</p>
-    
-    {% if passenger.tap_count == 1 %}
-      <p>Location assigned: {{ passenger.location1 }}</p>
-    {% else %}
-      <p>Location updated ({{ passenger.tap_count }} times): {{ passenger.location2 }}</p>
 
-      Fare: {{fare}}
-    {% endif %}
+           
+     
+
+
     
     <!-- Add other fields as needed -->
   
@@ -82,7 +59,26 @@
         {% else %}
         <p>No passenger information available.</p>
       {% endif %}
+        </header>
+        {% endblock %}
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'reader/script.js' %}" ></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+
+
+  
+</html>
+
+
+
+
         
         
        
-{% endblock %}

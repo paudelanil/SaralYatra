@@ -1,6 +1,6 @@
 {% extends 'reader/base.html' %}
 
-{% block title %}Home - Saral Yatra{% endblock %}
+{% block title %}Home - सरल Yatra{% endblock %}
 
 {% block content %}
 <!-- Header Section -->
@@ -9,20 +9,16 @@
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <h1 class="mx-auto my-0 text-uppercase">Saral Yatra</h1>
+                <h1 class="mx-auto my-0 text-uppercase">सरल Yatra</h1>
                 <a class="btn btn-primary" href="{% url 'initialProfile' %}">Scan Pay</a>
             </div>
         </div>
     </div>
+
+
 </header>
 
-<h2>Tap Passenger</h2>
 
-<form method="post" action="{% url 'tap_passenger' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Tap</button>
-</form>
 
 <!-- Display Passenger Details -->
 
