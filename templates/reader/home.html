@@ -2,10 +2,12 @@
 
 {% block title %}Home - सरल Yatra{% endblock %}
 
+{% load static %}
+
 {% block content %}
 <!-- Header Section -->
 <header class="masthead">
-    
+
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
@@ -14,10 +16,10 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'reader/script.js' %}"></script>
 
 
 </header>
-
 
 
 <!-- Display Passenger Details -->
@@ -30,12 +32,12 @@
     }
 </script>
 {% if passenger %}
-    <div>
-        <h2>Passenger Details:</h2>
-        <p>ID: {{ passenger.passengerID }}</p>
-        <p>Name: {{ passenger.full_name }}</p>
-        <p>Age: {{ passenger.age }}</p>
-        <!-- Add other fields as needed -->
-    </div>
+<div>
+    <h2>Passenger Details:</h2>
+    <p>ID: {{ passenger.passengerID }}</p>
+    <p>Name: {{ passenger.full_name }}</p>
+    <p>Age: {{ passenger.age }}</p>
+    <!-- Add other fields as needed -->
+</div>
 {% endif %}
 {% endblock %}

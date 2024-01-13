@@ -1,79 +1,44 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render, get_object_or_404
+
 # from django.views.generic import ListView
-from .models import Read, Passenger,NFCData,BusData
+from .models import Passenger, NFCData, BusData
 from .forms import PassengerForm
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 
-# class HomePageView(ListView):
-#     model = Read
-#     template_name = "reader/home.html"
-
 def initialProfile(request):
-    return render(request, 'reader/initialProfile.html' )
-def adminPage(request):
+    return render(request, "reader/initialProfile.html")
 
-    return render(request,'reader/adminPage.html')
+
+def adminPage(request):
+    return render(request, "reader/adminPage.html")
+
+
 def getDetails(request):
     context = {}
     form = PassengerForm()
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = PassengerForm(request.POST)
         if form.is_valid():
-            passenger_id = form.cleaned_data['passenger_id']
+            passenger_id = form.cleaned_data["passenger_id"]
             passenger = get_object_or_404(Passenger, passengerID=passenger_id)
-            
-            context['passenger'] = passenger
-           
 
+            context["passenger"] = passenger
 
-    context['form'] = form
-    return render(request, 'reader/home.html', context)
-# def tap_passenger(request):
-    
-#     context = {}
+    context["form"] = form
+    return render(request, "reader/home.html", context)
 
-#     if request.method == 'POST':
-#         form = PassengerForm(request.POST)
-#         if form.is_valid():
-#             passenger_id = form.cleaned_data['passenger_id']
-#             passenger = Passenger.objects.get(passengerID=passenger_id)
-#             if passenger.tap_count <1:
-           
-#             # Existing passenger, increment tap_count and update location2
-#                 passenger.tap_count += 1
-#                 # passenger.location1 = f"New Location for {passenger_id}"
-#                 passenger.location1 = "dhobhighat"
-#             else:
-#                 passenger.tap_count -= 1
-#                 passenger.location2 = "pulchowk"
-#                 fare = caluclate_price(passenger.location1,passenger.location2,passenger.IDstatus)
-#                 context['fare'] = fare
-
-#             passenger.save()
-            
-            
-
-#             context['passenger'] = passenger
-#             return render(request, 'reader/initialProfile.html', context)
-
-#     else:
-#         form = PassengerForm()
-
-#     context['form'] = form
-#     return render(request, 'reader/home.html', context)
 
 def passenger_tapped(request, id):
-    
     passenger = get_object_or_404(Passenger, passengerID=id)
 
     context = {
-        'passenger': passenger,
+        "passenger": passenger,
     }
 
-    return render(request, 'reader/initialProfile.html', context)
+    return render(request, "reader/initialProfile.html", context)
 
 
 @csrf_exempt
@@ -109,7 +74,7 @@ def save_nfc_data(request):
             else:
                 passenger.tap_count -= 1
                 passenger.location2 = f"{passenger.location2}"
-                bus.totalPassengers +=1
+                bus.totalPassengers += 1
 
                 distance = abs(
                     bus_stops[passenger.location1] - bus_stops[passenger.location2]
@@ -129,7 +94,6 @@ def save_nfc_data(request):
                 if passenger.IDstatus:
                     passenger.Fare *= 0.6
                 bus.totalEarned += passenger.Fare
-                bus.totalPassengers += 1
 
             bus.save()
             passenger.save()
