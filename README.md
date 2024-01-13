@@ -12,13 +12,11 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#prerequisites-and-installation">Prerequisites and Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#systemdesign">System Design</a></li>
+    <li><a href="#system-design">System Design</a></li>
       
   </ol>
 </details>
@@ -34,8 +32,9 @@ Our team worked together on a cool project to make paying for public transportat
 app, which means you can just use your contactless card(NFC card) to hop on a bus 
 without dealing with cash. This makes traveling around town much smoother and more convenient for everyone. 
 Our goal was to make public transportation more modern and user-friendly, and we're excited about how our
-project is making a positive impact on the way people get around. we've developed a user-friendly web app that serves as a terminal in public vehicles. Initially, we've set it up so that mobile phones equipped to accept NFC cards can act as terminals.
-Moreover, we've designed a dedicated mobile app for users to easily check schedules, track routes, and stay updated on relevant information.
+project is making a positive impact on the way people get around. 
+
+We've developed a user-friendly web app that serves as a terminal in public vehicles. Initially, we've set it up so that mobile phones equipped to accept NFC cards can act as terminals. Moreover, we've designed a dedicated mobile app for users to easily check schedules, track routes, and stay updated on relevant information.
 
 ### Built With
 
@@ -53,7 +52,7 @@ Our MVP is built using follwoing framework and tech stacks
 This is an example of how you can setup your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+### Prerequisites and Installation
 
 * Clone the repo
   ```sh
